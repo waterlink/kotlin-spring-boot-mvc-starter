@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/quizzy
+    username: quizzy
+    password: quizzy
+    driver-class-name: org.postgresql.Driver
+
+  messages:
+    basename: translations/messages
+
+  mail:
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+app:
+  auth:
+    confirmation-emails:
+      from: "Quizzy Support <noreply@example.org>"

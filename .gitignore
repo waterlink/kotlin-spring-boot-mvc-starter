@@ -1,0 +1,10 @@
+.idea/workspace.xml
+.idea/libraries/
+.idea/dbnavigator.xml
+.gradle/
+out/
+build/
+
+# ignored because contains sensitive credentials
+src/main/resources/application-cloud.yml
+/uploads/

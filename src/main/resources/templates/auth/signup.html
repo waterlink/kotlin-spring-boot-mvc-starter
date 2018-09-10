@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/narrow}">
+<head>
+    <title th:text="#{general.create_account}">Create account title</title>
+</head>
+<body>
+
+<h1 layout:fragment="header" th:text="#{general.create_account}">Create Account Header</h1>
+
+<div layout:fragment="content">
+    <div data-qa="error" th:if="${error}" th:text="#{${error}}" class="alert alert-danger">
+        Error message
+    </div>
+
+    <form method="post" th:action="@{/signup}" th:object="${form}">
+
+        <div class="form-group">
+            <label for="username" th:text="#{general.username_email}">Username email</label>
+            <input data-qa="user-input" id="username" type="email" class="form-control"
+                   th:field="*{username}" th:errorClass="is-invalid" th:placeholder="#{general.example_username}"/>
+            <p data-qa="user-validation" th:if="${#fields.hasErrors('username')}" class="invalid-feedback">
+                <span th:text="#{signup.username}">Username</span>
+                <span th:errors="*{username}">must be valid</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="name" th:text="#{signup.first_name}">First name</label>
+            <input data-qa="name-input" id="name" type="text" class="form-control"
+                   th:field="*{name}" th:errorClass="is-invalid" th:placeholder="#{signup.example_name}"/>
+            <p data-qa="name-validation" th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                <span th:text="#{signup.name}">Name</span>
+                <span th:errors="*{name}">must be valid</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="pass" th:text="#{signup.password}">Password</label>
+            <input data-qa="pass-input" id="pass" type="password" class="form-control"
+                   th:field="*{pass}" th:errorClass="is-invalid" th:placeholder="#{signup.password_instructions}"/>
+            <p data-qa="pass-validation" th:if="${#fields.hasErrors('pass')}" class="invalid-feedback">
+                <span th:text="#{signup.passwords}">Passwords</span>
+                <span th:errors="*{pass}">must be valid</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm" th:text="#{signup.confirm}">Confirm</label>
+            <input data-qa="confirm-input" id="confirm" type="password" class="form-control"
+                   th:field="*{confirm}" th:errorClass="is-invalid" th:placeholder="#{signup.confirm_instructions}"/>
+            <p data-qa="confirm-validation" th:if="${#fields.hasErrors('confirm')}" class="invalid-feedback">
+                <span th:text="#{signup.passwords}">Passwords</span>
+                <span th:errors="*{confirm}">must be valid</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <button data-qa="submit-button" type="submit" class="btn btn-primary"
+                    th:text="#{general.create_account}">
+                Create account
+            </button>
+        </div>
+
+        <div class="form-group">
+            <span th:text="#{signup.have_account}">Have an account already?</span>
+            <a data-qa="login" th:href="@{/login}" th:text="#{general.login}">Login</a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

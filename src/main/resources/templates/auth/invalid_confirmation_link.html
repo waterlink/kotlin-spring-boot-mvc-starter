@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title th:text="#{confirm.invalid_confirmation_link}">Invalid code title</title>
+</head>
+<body>
+
+<div layout:fragment="content"
+     data-qa="error"
+     th:text="#{confirm.code_is_invalid}">
+    code is invalid
+</div>
+
+</body>
+</html>

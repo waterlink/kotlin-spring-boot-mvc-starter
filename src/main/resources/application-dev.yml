@@ -1,0 +1,9 @@
+spring:
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+    cache: false
+
+  resources:
+    static-locations: file:src/main/resources/static/
+    cache:
+      period: 0

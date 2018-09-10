@@ -1,0 +1,8 @@
+Hey, [( ${name} )]!
+
+To complete your signup, please verify your account by copying and pasting the following link into your browser:
+
+[( ${confirmUrl} )]
+
+Thank you,
+example.org

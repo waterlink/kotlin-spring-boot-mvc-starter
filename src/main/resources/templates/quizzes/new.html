@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title th:text="#{quiz.new_quiz}">New Quiz Title</title>
+</head>
+<body>
+
+<h1 layout:fragment="header" th:text="#{quiz.new_quiz}">New Quiz Header</h1>
+
+<div layout:fragment="content"
+     th:insert="quizzes/_form :: form (type='create', action='/quizzes/')">
+    Create Form
+</div>
+
+</body>
+</html>

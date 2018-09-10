@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<p>Hey, <span th:text="${name}">Friend</span>!</p>
+
+<p>To complete your signup, please click on the following link:</p>
+
+<p><a th:href="${confirmUrl}">Confirm my account</a></p>
+
+<p>Or copy and paste the following link into your browser:
+    <span th:text="${confirmUrl}">http://example.org/confirm-url</span></p>
+
+<p>Thank you,<br>
+    example.org</p>
+</body>
+</html>

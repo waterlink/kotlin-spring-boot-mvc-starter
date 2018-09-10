@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/quizzy_test
+    username: quizzy_test
+    password: quizzy_test
+    driver-class-name: org.postgresql.Driver
+
+passwordEncoder:
+  strength: 4

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/narrow}">
+<head>
+    <title th:text="#{login.please_login}">Login Page Title</title>
+</head>
+<body>
+
+<h1 layout:fragment="header" th:text="#{general.login}">Login Header</h1>
+
+<div layout:fragment="content">
+    <div data-qa="sign-out-info" th:if="${signOutInfo}" th:text="#{${signOutInfo}}">Sign out info</div>
+
+    <div data-qa="error" th:if="${error}" class="alert alert-danger">
+        <span th:text="#{${error}}">Login Error</span>
+
+        <div th:if="${nonConfirmedUser}">
+            <form id="resend_confirmation_form"
+                  method="post" th:action="@{/resend-confirmation}">
+                <input type="hidden" name="username" th:value="${param.username}"/>
+
+                <a href="#" data-qa="resend-confirmation"
+                   onclick="resend_confirmation_form.submit()"
+                   th:text="#{login.resend_confirmation}">Resend Confirmation</a>
+            </form>
+        </div>
+    </div>
+
+    <form method="post" th:action="@{/login}">
+        <div class="form-group">
+            <label for="username" th:text="#{general.username_email}">Username (email)</label>
+            <input id="username" type="email" name="username" th:value="${param.username}"
+                   data-qa="user-input" class="form-control" th:placeholder="#{general.example_username}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password" th:text="#{login.password}">Password</label>
+            <input id="password" type="password" name="password"
+                   data-qa="pass-input" class="form-control" th:placeholder="#{login.your_password}"/>
+        </div>
+
+        <div class="form-group">
+            <button data-qa="submit-button" type="submit" class="btn btn-primary"
+                    th:text="#{general.login}">Login
+            </button>
+        </div>
+
+        <div class="form-group">
+            <span th:text="#{login.no_account_yet}">No account yet?</span>
+            <a data-qa="create-account" th:href="@{/signup}" th:text="#{general.create_account}">Create Account</a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

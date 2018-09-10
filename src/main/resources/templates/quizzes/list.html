@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title th:text="#{quiz.list}">Quiz list title</title>
+</head>
+<body>
+
+<h1 layout:fragment="header" th:text="#{quiz.list}">Quiz List Header</h1>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col">
+            <a data-qa="new-quiz"
+               class="btn btn-primary"
+               th:href="@{/quizzes/new}"
+               th:text="#{quiz.new_quiz}">New quiz</a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-6">
+            <div th:each="quiz : ${quizzes}"
+                 class="text-center rounded border p-2"
+                 data-qa="quiz"
+                 th:attr="data-qa-title=${quiz.title}">
+
+                <div class="text-right">
+                    <a href="#"
+                       th:href="@{/quizzes/{id}/edit(id=${quiz.id})}"
+                       class="btn btn-outline-primary"
+                       data-qa="edit-button"
+                       th:text="#{quiz.edit}">Edit</a>
+                </div>
+
+                <h2 th:text="${quiz.title}" data-qa="quiz-title">Quiz title</h2>
+
+                <img th:src="${quiz.imageUrl}"
+                     class="img-fluid"
+                     data-qa="quiz-image"
+                     src="https://via.placeholder.com/200x150"
+                     alt="Quiz image"/>
+
+                <p th:text="${quiz.description}" data-qa="quiz-description">
+                    Quiz description here
+                </p>
+
+                <a href="#" class="btn btn-primary btn-block text-uppercase"
+                   data-qa="quiz-cta"
+                   th:href="@{/quizzes/{id}(id=${quiz.id})}"
+                   th:text="${quiz.cta}"
+                >Take quiz</a>
+
+                <small data-qa="quiz-duration">
+                    <em th:text="#{quiz.it_will_take_you_only(${quiz.durationInMinutes})}">
+                        It will take you only 3 minutes!
+                    </em>
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

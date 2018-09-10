@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head layout:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE" th:text="#{site.title}">Example Title</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+<div class="container">
+    <header class="row">
+        <div class="col-12" th:class="${colClass}" data-qa="header">
+            <div layout:fragment="header">
+                <h1 th:text="#{site.title}">Example header</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="row">
+        <div class="col-12" th:class="${colClass}" data-qa="content">
+            <div layout:fragment="content">
+                <p>Example Content</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="row mt-5">
+        <div class="col-12" th:class="${colClass}" data-qa="footer">
+            <div layout:fragment="footer">
+                <p th:text="#{site.footer_copy}">&copy; Company From-Until</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

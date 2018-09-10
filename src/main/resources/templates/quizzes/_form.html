@@ -1,0 +1,89 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     th:fragment="form (type, action)"
+     th:assert="${(type == 'create' or type == 'update') and (!#strings.isEmpty(action))}">
+
+    <form method="post" th:action="@{${action}}" enctype="multipart/form-data" th:object="${form}">
+        <div class="form-group">
+            <label for="title" th:text="#{quiz.title}">Title</label>
+            <input id="title" type="text" th:field="*{title}" th:errorClass="is-invalid"
+                   data-qa="title-input" class="form-control" th:placeholder="#{quiz.title_example}"/>
+            <p data-qa="title-validation" th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+                <span th:text="#{quiz.title}">Title</span>
+                <span th:errors="*{title}">must not be blank</span>
+            </p>
+        </div>
+
+        <div class="form-group row" th:if="${type == 'update'}">
+            <div class="col-3">
+                <label for="image" th:text="#{quiz.current_image}">Current image</label>
+                <img src="https://via.placeholder.com/200x150"
+                     class="img-fluid"
+                     th:src="*{currentImageUrl}"
+                     th:alt="#{quiz.current_image}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image" th:text="#{quiz.image}">Image</label>
+            <input id="image" type="file" name="image" accept="image/*" th:value="${param.image}"
+                   data-qa="image-input" class="form-control-file"/>
+            <p data-qa="image-validation" th:if="${#fields.hasErrors('image')}" class="invalid-feedback">
+                <span th:text="#{quiz.image}">Image</span>
+                <span th:errors="*{image}">must not be blank</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="description" th:text="#{quiz.description}">Description</label>
+            <textarea id="description"
+                      th:field="*{description}"
+                      th:placeholder="#{quiz.description_example}"
+                      data-qa="description-input" class="form-control">
+
+            </textarea>
+            <p data-qa="description-validation" th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                <span th:text="#{quiz.description}">Description</span>
+                <span th:errors="*{description}">must not be blank</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="duration" th:text="#{quiz.duration}">Duration</label>
+            <select id="duration" th:field="*{duration}"
+                    data-qa="duration-select" class="form-control">
+                <option value="-1" th:text="#{quiz.duration_placeholder}" disabled selected></option>
+                <option value="" disabled>---</option>
+                <option value="1">1 min.</option>
+                <option value="2">2 min.</option>
+                <option value="3">3 min.</option>
+                <option value="4">4 min.</option>
+                <option value="5">5 min.</option>
+                <option value="6">6 min.</option>
+                <option value="7">7 min.</option>
+                <option value="8">8 min.</option>
+                <option value="9">9 min.</option>
+            </select>
+            <p data-qa="duration-validation" th:if="${#fields.hasErrors('duration')}" class="invalid-feedback">
+                <span th:text="#{quiz.duration}">Duration</span>
+                <span th:errors="*{duration}">must not be blank</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="cta" th:text="#{quiz.cta}">CTA</label>
+            <input id="cta" type="text" th:field="*{cta}"
+                   data-qa="cta-input" class="form-control" th:placeholder="#{quiz.cta_example}"/>
+            <p data-qa="cta-validation" th:if="${#fields.hasErrors('cta')}" class="invalid-feedback">
+                <span th:text="#{quiz.cta}">CTA</span>
+                <span th:errors="*{cta}">must not be blank</span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <button data-qa="submit-button" type="submit" class="btn btn-primary"
+                    th:text="#{quiz.__${type}__}">
+                Create
+            </button>
+        </div>
+    </form>
+</div>

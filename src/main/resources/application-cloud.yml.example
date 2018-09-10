@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: <your db url>
+    username: <your db username>
+    password: <your db password>
+
+  mail:
+    host: <your smtp host>
+    port: <your smtp port>
+    username: <your smtp username>
+    password: <your smtp password>
+
+app:
+  auth:
+    confirmation-emails:
+      from: "Your Name <your-email@example.org>"

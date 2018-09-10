@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title th:text="#{signup.thank_you}">Thank you title</title>
+</head>
+<body>
+
+<h1 layout:fragment="header" th:text="#{signup.thank_you}">Thank you header</h1>
+
+<div layout:fragment="content"
+     th:text="#{signup.confirmation_message}">
+    code is invalid
+</div>
+
+</body>
+</html>
