@@ -208,8 +208,6 @@ Watch the [introduction video](https://iwillteachyoukotlin.com/kotlin-backend-be
 
 ## Removing the demo app code
 
-NOTE: This section is TODO. The scripts are not there yet.
-
 To remove the demo app code, you can run a single shell-script:
 
 ```bash
