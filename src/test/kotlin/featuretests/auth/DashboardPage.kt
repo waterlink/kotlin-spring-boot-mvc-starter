@@ -1,4 +1,4 @@
-package featuretests
+package featuretests.auth
 
 import org.fluentlenium.core.FluentPage
 import org.fluentlenium.core.annotation.PageUrl

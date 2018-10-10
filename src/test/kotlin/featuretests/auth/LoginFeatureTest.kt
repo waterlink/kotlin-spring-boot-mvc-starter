@@ -2,7 +2,6 @@ package featuretests.auth
 
 import app.auth.AuthService
 import app.auth.user.User
-import featuretests.DashboardPage
 import helpers.FeatureTest
 import helpers.today
 import org.fluentlenium.assertj.FluentLeniumAssertions.assertThat

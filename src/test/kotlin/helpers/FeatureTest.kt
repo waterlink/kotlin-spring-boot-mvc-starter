@@ -4,7 +4,7 @@ import app.Application
 import app.auth.AuthService
 import app.email.TestEmailService
 import app.quiz.QuizService
-import featuretests.DashboardPage
+import featuretests.auth.DashboardPage
 import featuretests.auth.ConfirmationPage
 import featuretests.auth.LoginPage
 import featuretests.auth.SignupPage
