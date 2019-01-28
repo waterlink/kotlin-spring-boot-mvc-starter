@@ -352,14 +352,14 @@ interface SignupFeatureTestHelper : LoginFeatureTestHelper {
 
     private fun parseConfirmationEmail(): ParsedConfirmationEmail? {
         val email = emailService.lastEmail
-                ?: return fail("There was no confirmation email").let { null }
+                ?: return fail<Nothing>("There was no confirmation email")
 
         val link = "http[^ \n]+".toRegex().find(email.textBody)?.value
-                ?: return fail("There was no link in the confirmation email").let { null }
+                ?: return fail<Nothing>("There was no link in the confirmation email")
 
         val (code) = "http[^ ]+/confirm/([^ \n]+)".toRegex().find(email.textBody)
                 ?.destructured
-                ?: return fail("There was no code in the confirmation email").let { null }
+                ?: return fail<Nothing>("There was no code in the confirmation email")
 
         return ParsedConfirmationEmail(email, link, code)
     }
