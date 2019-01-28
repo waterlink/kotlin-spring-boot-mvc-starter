@@ -3,6 +3,7 @@
 ## Batteries included
 
 - Spring Boot 2 MVC
+- Works with JVM 8 and JVM 11
 - Ready for JdbcTemplate-style repositories + ready PostgreSQL setup
 - Database migrations with Flyway
 - Spring Security email/password login + signup
